@@ -158,7 +158,7 @@ class ProdutosController extends Controller
             $produtos                             = Produtos::find($id);
             if(!$produtos) {
                 DB::rollBack();
-                Log::warning('User | destroy -| Contabilidade não encontrada!');
+                Log::warning('Produtos | destroy -| Produto não encontrada!');
                 return back()->withInput()->withErrors(['error' => '<b>Ocorreu um erro!</b> Produto não encontrado.']);
             }
 

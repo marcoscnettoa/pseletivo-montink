@@ -13,7 +13,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 
-class PedidosController extends Controller
+class PedidosCarrinhoDeComprasController extends Controller
 {
     public function index() {
         return view('pedidos.index', []);

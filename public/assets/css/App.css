@@ -82,6 +82,30 @@ form label { color: #545454; font-weight: 600;}
 .btn-purple-st2:hover,
 .btn-purple-st2.active { color:#fff; background-color: #b100ff !important; border-color: #b100ff !important; opacity:0.75; }
 
+.lista-produtos { }
+.lista-produtos .card { border-radius: 10px; overflow: hidden; }
+.lista-produtos .card .card-body { }
+.lista-produtos .card .card-body .imagem { }
+.lista-produtos .card .card-body .imagem img { }
+.lista-produtos .card .card-body .informacoes { }
+.lista-produtos .card .card-body .informacoes .valor { font-size:22px; font-weight:600; }
+.lista-produtos .card .card-body .variacoes { display:flex; gap:7px; justify-content:center; }
+.lista-produtos .card .card-body .variacoes .variacao { cursor:pointer; border:1px dashed #ccc; width:35px; height:35px; align-content: center; }
+.lista-produtos .card .card-body .variacoes .variacao:hover { background-color:#efefef; }
+.lista-produtos .card .card-body .variacoes .variacao.active { border-color:#5cb85c; background-color:#5cb85c; color: #fff; }
+.lista-produtos .card .card-footer { }
+.lista-produtos .card .card-footer button.btn-comprar { }
+.lista-produtos .card .card-footer button.btn-comprar[disabled] { cursor:not-allowed; background-color: #ccc !important; border-color: #9c9c9c !important; color: #8d8d8d; }
+
+#main-menu-navigation { }
+#main-menu-navigation li { }
+#main-menu-navigation li a { }
+#main-menu-navigation li a.nav-link.nav-link-carrinho-compra { background-color:#5cb85c; color: #fff; border-bottom: 3px solid #5cb85c; }
+#main-menu-navigation li a.nav-link.nav-link-carrinho-compra:hover,
+#main-menu-navigation li a.nav-link.nav-link-carrinho-compra.active { background-color:#000000; color: #fff; border-bottom: 3px solid #5cb85c; }
+#main-menu-navigation li a.nav-link.nav-link-carrinho-compra:hover i,
+#main-menu-navigation li a.nav-link.nav-link-carrinho-compra.active i { color: #5cb85c; }
+
 div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) { background-color: #e75e0f !important; }
 
 a { color: #e75e0f; }

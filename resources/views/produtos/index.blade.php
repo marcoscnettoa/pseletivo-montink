@@ -18,12 +18,12 @@
                                 <div class="table-responsive">
                                     <table class="table table-st1 table-striped table-bordered datatable-st1">
                                         <thead>
-                                        <tr>
-                                            <th class="text-center" width="80" data-orderable="false">#</th>
-                                            <th class="text-center" width="60"># ID</th>
-                                            <th class="text-left">Nome</th>
-                                            <th class="text-left" width="120">Preço</th>
-                                        </tr>
+                                            <tr>
+                                                <th class="text-center" width="80" data-orderable="false">#</th>
+                                                <th class="text-center" width="60"># ID</th>
+                                                <th class="text-left">Nome</th>
+                                                <th class="text-left" width="120">Preço</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                         @if($produtos->count())

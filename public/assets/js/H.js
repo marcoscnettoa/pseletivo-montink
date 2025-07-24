@@ -2,6 +2,29 @@
 var H = {
     load: function (){
 
+    },
+    redirect: function(url, method, enctype, data){
+        const form  = $('<form style="display:none;">');
+        form.attr('action', url);
+        form.attr('method', method);
+        form.attr('enctype', enctype);
+
+        const in_token = $('<input>');
+        in_token.attr('type','hidden');
+        in_token.attr('name','_token');
+        in_token.attr('value',$('meta[name="csrf-token"]').attr('content'));
+
+        form.append(in_token);
+
+        $.each(data, function(key, value) {
+            const in_data = $('<input>');
+            in_data.attr('type','hidden');
+            in_data.attr('name',key);
+            in_data.attr('value',value);
+            form.append(in_data);
+        });
+        $('body').append(form);
+        form.submit();
     }
 }
 
@@ -52,6 +75,10 @@ function load_mask_data_horas_n2(E) {
 
 function load_mask_dinheiro_br_n1(E) {
     $(E).mask('000.000.000.000.000,00', { reverse: true });
+}
+
+function load_mask_numero_n1(E) {
+    $(E).mask('00000000000000000', { reverse: true });
 }
 
 function load_mask_porcentagem_n1(E) {
@@ -538,6 +565,6 @@ function load_box_repeat(E){
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
     H.load();
 });

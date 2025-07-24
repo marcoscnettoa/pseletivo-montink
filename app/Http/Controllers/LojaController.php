@@ -11,11 +11,127 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cupons;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
+use App\Models\Produtos;
 
 class LojaController extends Controller
 {
     public function index() {
-        return view('index', []);
+
+        try {
+
+            $produtos = Produtos::with(['getVariacoes'])->orderBy('id','ASC')->get();
+
+            return view('index', [
+                'produtos' => $produtos
+            ]);
+
+        }catch(\Exception $e){
+            Log::error('Error: '.$e->getMessage());
+        }
+
     }
+
+    public function adicionarCarrinho(){
+
+        try {
+
+            // session()->invalidate(); return ''; exit;
+
+            $data     =  request()->all();
+
+            $carrinho = session()->get('carrinho',[]);
+
+            $produto_variacao = 'loja_produtos_id_'.$data['loja_produtos_id'].'_loja_variacoes_id_'.$data['loja_variacoes_id'];
+            if(isset($carrinho[$produto_variacao])){
+                $carrinho[$produto_variacao]['quantidade']++;
+            }else {
+                $carrinho[$produto_variacao] = [
+                    'loja_estoques_id'  => $data['loja_estoques_id'],
+                    'loja_produtos_id'  => $data['loja_produtos_id'],
+                    'loja_variacoes_id' => $data['loja_variacoes_id'],
+                    'quantidade'        => 1,
+                ];
+            }
+
+            session()->put('carrinho', $carrinho);
+
+            return redirect()->route('carrinho.compra');
+
+            //print_r(session()->get('carrinho')); exit;
+
+        }catch(\Exception $e){
+            Log::error('Error: '.$e->getMessage());
+            return redirect()->route('loja.index')->withInput()->withErrors(['error' => __('error.error_exception_n1')]);
+        }
+
+    }
+
+    public function removerCarrinho(){
+
+        try {
+
+            $data             = request()->all();
+
+            $carrinho         = session()->get('carrinho',[]);
+
+            $produto_variacao = 'loja_produtos_id_'.$data['loja_produtos_id'].'_loja_variacoes_id_'.$data['loja_variacoes_id'];
+
+            unset($carrinho[$produto_variacao]);
+
+            session()->put('carrinho', $carrinho);
+
+            return redirect()->route('carrinho.compra');
+
+        }catch(\Exception $e){
+            Log::error('Error: '.$e->getMessage());
+            return redirect()->route('loja.index')->withInput()->withErrors(['error' => __('error.error_exception_n1')]);
+        }
+
+    }
+
+    public function cancelarCarrinho(){
+
+        try {
+
+            session()->forget('carrinho');
+
+            return redirect()->route('loja.index');
+
+        }catch(\Exception $e){
+            Log::error('Error: '.$e->getMessage());
+            return redirect()->route('loja.index')->withInput()->withErrors(['error' => __('error.error_exception_n1')]);
+        }
+
+    }
+
+    public function adicionarCupom() {
+
+        try {
+
+            $data             =  request()->all();
+
+            $cupom            = Cupons::where('codigo',$data['codigo'])->where('validade','<=',now())->orderBy('validade','ASC')->first();
+            if($cupom){
+                session()->put('cupom', [
+                    'codigo'        => $cupom->codigo,
+                    'valor_minimo'  => $cupom->valor_minimo,
+                    'desconto'      => $cupom->desconto,
+                    'validade'      => $cupom->validade,
+                ]);
+                return redirect()->route('carrinho.compra')->with(['success' => 'Cupom aplicado com sucesso!']);
+            }else {
+                session()->put('cupom', []);
+                return redirect()->route('carrinho.compra')->withErrors(['error' => 'Não foi encontrado o cupom informado!']);
+            }
+
+        }catch(\Exception $e){
+            Log::error('Error: '.$e->getMessage());
+            return redirect()->route('loja.index')->withInput()->withErrors(['error' => __('error.error_exception_n1')]);
+        }
+
+    }
+
 }

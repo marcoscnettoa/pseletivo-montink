@@ -7,7 +7,7 @@ use App\Services\Consultas\ConsultaCepService;
 use App\Services\Consultas\ConsultaCnpjService;
 use App\Services\Consultas\ConsultaMunicipiosService;
 
-class ConsultasController extends Controller {
+class ConsultasApiController extends Controller {
 
     public static function cep($cep, ConsultaCepService $service) {
 

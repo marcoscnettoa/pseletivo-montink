@@ -23,6 +23,7 @@ var APP = {
         load_mask_data_horas_n1($('.mask-data-hora-n1'));
         load_mask_data_horas_n2($('.mask-data-hora-n2'));
         load_mask_dinheiro_br_n1($('.mask-dinheiro-br-n1'));
+        load_mask_numero_n1($('.mask-numero-n1'));
         load_mask_porcentagem_n1($('.mask-porcentagem-n1'));
         load_mask_porcentagem_n2($('.mask-porcentagem-n1'));
         load_data_picker($('.data-picker'));
@@ -37,6 +38,6 @@ var APP = {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
     APP.load();
 });

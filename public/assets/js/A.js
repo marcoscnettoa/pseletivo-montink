@@ -5,6 +5,6 @@ var A = {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
     A.load();
 });

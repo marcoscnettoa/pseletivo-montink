@@ -62,16 +62,16 @@
                 <a class="nav-link {{Request::segment(1)=='produtos'?'active':'' }}" href="{{route('produtos.index')}}"><i class="feather icon-aperture"></i><span>Produtos</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{Request::segment(1)=='variacoes'?'active':'' }}" href="{{route('produtos.index')}}"><i class="feather icon-tag"></i><span>Variações</span></a>
+                <a class="nav-link {{Request::segment(1)=='variacoes'?'active':'' }}" href="{{route('variacoes.index')}}"><i class="feather icon-tag"></i><span>Variações</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{Request::segment(1)=='estoques'?'active':'' }}" href="{{route('produtos.index')}}"><i class="feather icon-box"></i><span>Estoques</span></a>
+                <a class="nav-link {{Request::segment(1)=='estoques'?'active':'' }}" href="{{route('estoques.index')}}"><i class="feather icon-box"></i><span>Estoques</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{Request::segment(1)=='cupons'?'active':'' }}" href="{{route('cupons.index')}}"><i class="feather icon-award"></i><span>Cupons</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{Request::segment(1)=='pedidos'?'active':'' }}" href="{{route('pedidos.index')}}"><i class="feather icon-shopping-cart"></i><span>Pedidos</span></a>
+                <a class="nav-link nav-link-carrinho-compra {{Request::segment(1)=='carrinho-compra'?'active':'' }}" href="{{route('carrinho.compra')}}"><i class="feather icon-shopping-cart"></i><span>Carrinho de Compra</span></a>
             </li>
         </ul>
     </div>

@@ -47,13 +47,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6" id="box_cnpj">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="in_nome">Nome <span class="color-danger">*</span></label>
                                             <input type="text" name="nome" value="{{old('nome',$produtos?$produtos->nome:'')}}" class="form-control in_nome" id="in_nome" placeholder="" required maxlength="255">
                                         </div>
                                     </div>
-                                    <div class="col-md-3" id="box_cnpj">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="in_preco">Preço <span class="color-danger">*</span></label>
                                             <input type="text" name="preco" value="{{old('preco',$produtos?\App\Helpers\Helper::H_Decimal_DB_ptBR($produtos->preco):'')}}" class="form-control in_preco mask-dinheiro-br-n1" id="in_preco" placeholder="0,00" required maxlength="50">
@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6" id="box_cnpj">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="in_descricao">Descrição</label>
                                             <textarea name="descricao" class="form-control in_descricao" id="in_descricao" maxlength="500" rows="6">{{old('descricao',$produtos?$produtos->descricao:'')}}</textarea>
