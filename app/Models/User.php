@@ -56,7 +56,7 @@ class User extends Authenticatable
     }
 
     public function getRole(){
-        return $this->belongsTo(Roles::class, 'roles_id');
+        return $this->belongsTo(Produtos::class, 'roles_id');
     }
 
     public function getAdministrador(){

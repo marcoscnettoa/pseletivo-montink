@@ -13,7 +13,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 
-class HomeController extends Controller
+class PedidosController extends Controller
 {
-    //
+    public function index() {
+        return view('pedidos.index', []);
+    }
 }

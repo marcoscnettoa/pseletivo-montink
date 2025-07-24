@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\HomeController;
-use \App\Http\Controllers\DashboardController;
-use \App\Http\Controllers\ContabilidadesController;
-use \App\Http\Controllers\ClientesController;
+use \App\Http\Controllers\LojaController;
+use \App\Http\Controllers\ProdutosController;
+use \App\Http\Controllers\CuponsController;
+use \App\Http\Controllers\PedidosController;
 
-Route::get('/', [ HomeController::class, 'index' ]);
+Route::get('/', [ LojaController::class, 'index' ])->name('loja.index');
 
 // :: Produtos
 Route::resource('produtos', ProdutosController::class)->names([
@@ -18,15 +18,15 @@ Route::resource('produtos', ProdutosController::class)->names([
     'destroy'   => 'produtos.destroy',
 ])->parameters(['produtos' => 'id']);
 
-// :: Pedidos
-Route::resource('pedidos', PedidosController::class)->names([
-    'index'     => 'pedidos.index',
-    'create'    => 'pedidos.create',
-    'edit'      => 'pedidos.edit',
-    'store'     => 'pedidos.store',
-    'update'    => 'pedidos.update',
-    'destroy'   => 'pedidos.destroy',
-])->parameters(['pedidos' => 'id']);
+// :: Variações -| Produtos
+Route::resource('variacoes', ProdutosController::class)->names([
+    'index'     => 'variacoes.index',
+    'create'    => 'variacoes.create',
+    'edit'      => 'variacoes.edit',
+    'store'     => 'variacoes.store',
+    'update'    => 'variacoes.update',
+    'destroy'   => 'variacoes.destroy',
+])->parameters(['variacoes' => 'id']);
 
 // :: Cupons
 Route::resource('cupons', CuponsController::class)->names([
@@ -38,3 +38,12 @@ Route::resource('cupons', CuponsController::class)->names([
     'destroy'   => 'cupons.destroy',
 ])->parameters(['cupons' => 'id']);
 
+// :: Pedidos
+Route::resource('pedidos', PedidosController::class)->names([
+    'index'     => 'pedidos.index',
+    'create'    => 'pedidos.create',
+    'edit'      => 'pedidos.edit',
+    'store'     => 'pedidos.store',
+    'update'    => 'pedidos.update',
+    'destroy'   => 'pedidos.destroy',
+])->parameters(['pedidos' => 'id']);
