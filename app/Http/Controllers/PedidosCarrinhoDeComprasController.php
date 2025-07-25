@@ -270,6 +270,14 @@ class PedidosCarrinhoDeComprasController extends Controller
             session()->forget('carrinho');
             session()->forget('cupom');
 
+            // ! Envio E-mail
+            try {
+                $this->notificacaoEmail($pedidos->id,false);
+            }catch(\Exception $e){
+                Log::error('Erro Envio E-mail: '.$e->getMessage());
+            }
+            // - !
+
             return redirect()->route('lista.compras')->with([
                 'success' => 'Pedido realizado com sucesso!'
             ]);
@@ -310,7 +318,7 @@ class PedidosCarrinhoDeComprasController extends Controller
 
                 Mail::send('email.pedido', ['pedido'=>$pedido], function($message) use ($pedido){
                     $message->from(config('mailers.from.address','no-reply@pseletivo.com.br'),config('mailers.from.name','PSeletivo'));
-                    $message->to('marcoscnettoa@gmail.com'); // :: $pedido->cliente_email
+                    $message->to($pedido->cliente_email);
                     $message->subject(config('mailers.from.name','PSeletivo').' - Pedido Nº '.str_pad($pedido->id,5,"0",STR_PAD_LEFT).' -| Em Andamento');
                 });
 
