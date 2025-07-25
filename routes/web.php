@@ -10,7 +10,8 @@ use \App\Http\Controllers\PedidosCarrinhoDeComprasController;
 
 Route::get('/', [ LojaController::class, 'index' ])->name('loja.index');
 Route::post('adicionar-carrinho',   [ LojaController::class, 'adicionarCarrinho' ])->name('loja.adicionar.carrinho');
-Route::post('adicionar-cupom',       [ LojaController::class, 'adicionarCupom' ])->name('loja.adicionar.cupom');
+Route::post('adicionar-cupom',      [ LojaController::class, 'adicionarCupom' ])->name('loja.adicionar.cupom');
+Route::post('remover-cupom',        [ LojaController::class, 'removerCupom' ])->name('loja.remover.cupom');
 Route::get('remover-carrinho',      [ LojaController::class, 'removerCarrinho' ])->name('loja.remover.carrinho');
 Route::get('cancelar-carrinho',     [ LojaController::class, 'cancelarCarrinho' ])->name('loja.cancelar.carrinho');
 
@@ -55,8 +56,9 @@ Route::resource('cupons', CuponsController::class)->names([
 ])->parameters(['cupons' => 'id']);
 
 // :: Pedidos -| Carrinho de Compra
-Route::get('carrinho-compra', [PedidosCarrinhoDeComprasController::class,'index'])->name('carrinho.compra');
-Route::resource('pedidos', PedidosCarrinhoDeComprasController::class)->names([
+Route::get('carrinho-compra',       [ PedidosCarrinhoDeComprasController::class,'index'])->name('carrinho.compra');
+Route::post('finalizar-compra',     [ PedidosCarrinhoDeComprasController::class, 'finalizarCompra'])->name('finalizar.compra');
+Route::resource('pedidos',            PedidosCarrinhoDeComprasController::class)->names([
     //'index'     => 'pedidos.index',
     'create'    => 'pedidos.create',
     'edit'      => 'pedidos.edit',

@@ -334,7 +334,7 @@ function load_btn_consulta_cep(E){
         const _in_set_edr_municip   = $(_this.data('input-set-municipio'));
 
         $.ajax({
-            url: G.app_url+'/api/v1/app/consultas/cep/'+_in_cep.val().replace(/\D/g,''),
+            url: G.app_url+'/api/v1/consultas/cep/'+_in_cep.val().replace(/\D/g,''),
             method: 'GET',
             //data: { },
             //contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -383,7 +383,7 @@ function load_btn_consulta_cnpj(E){
         _in_set_edr_uf.val('');
 
         $.ajax({
-            url: G.app_url+'/api/v1/app/consultas/cnpj/'+_in_cnpj.val().replace(/\D/g,''),
+            url: G.app_url+'/api/v1/consultas/cnpj/'+_in_cnpj.val().replace(/\D/g,''),
             method: 'GET',
             //data: { },
             //contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -424,7 +424,7 @@ function load_change_uf_municipios(E, TriggerChange = false){
         if(_this.val()==''){ return false; }
 
         $.ajax({
-            url: G.app_url+'/api/v1/app/consultas/municipios/'+_this.val(),
+            url: G.app_url+'/api/v1/consultas/municipios/'+_this.val(),
             method: 'GET',
             //data: { },
             //contentType: 'application/x-www-form-urlencoded; charset=UTF-8',

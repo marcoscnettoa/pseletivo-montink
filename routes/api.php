@@ -7,6 +7,9 @@ use App\Http\Controllers\Api\V1\VariacoesApiController;
 
 Route::prefix('v1')->group(function() {
 
-    Route::get('/variacoes/produto/{id}', [ VariacoesApiController::class, 'getVariacoesProduto' ])->name('variacoes.produto.id');
+    Route::get('/consultas/cep/{cep}',          [ ConsultasApiController::class, 'cep' ]);
+    Route::get('/consultas/municipios/{uf}',    [ ConsultasApiController::class, 'municipios' ]);
+
+    Route::get('/variacoes/produto/{id}',       [ VariacoesApiController::class, 'getVariacoesProduto' ])->name('variacoes.produto.id');
 
 });

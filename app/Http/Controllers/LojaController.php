@@ -18,11 +18,16 @@ use App\Models\Produtos;
 
 class LojaController extends Controller
 {
+
     public function index() {
 
         try {
 
             $produtos = Produtos::with(['getVariacoes'])->orderBy('id','ASC')->get();
+
+            foreach($produtos as $produto){
+
+            }
 
             return view('index', [
                 'produtos' => $produtos
@@ -113,7 +118,7 @@ class LojaController extends Controller
 
             $data             =  request()->all();
 
-            $cupom            = Cupons::where('codigo',$data['codigo'])->where('validade','<=',now())->orderBy('validade','ASC')->first();
+            $cupom            = Cupons::where('codigo',$data['codigo'])->where('validade','>=',now()->startOfDay())->orderBy('validade','ASC')->first();
             if($cupom){
                 session()->put('cupom', [
                     'codigo'        => $cupom->codigo,
@@ -126,6 +131,21 @@ class LojaController extends Controller
                 session()->put('cupom', []);
                 return redirect()->route('carrinho.compra')->withErrors(['error' => 'Não foi encontrado o cupom informado!']);
             }
+
+        }catch(\Exception $e){
+            Log::error('Error: '.$e->getMessage());
+            return redirect()->route('loja.index')->withInput()->withErrors(['error' => __('error.error_exception_n1')]);
+        }
+
+    }
+
+    public function removerCupom(){
+
+        try {
+
+            session()->forget('cupom');
+
+            return redirect()->route('carrinho.compra');
 
         }catch(\Exception $e){
             Log::error('Error: '.$e->getMessage());

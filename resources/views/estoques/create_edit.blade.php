@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="in_loja_variacoes_id">Estoque <span class="color-danger">*</span></label>
+                                            <label for="in_loja_variacoes_id">Variação <span class="color-danger">*</span></label>
                                             @php
                                                 $loja_variacoes_id_selected = old('loja_variacoes_id',($estoques?$estoques->loja_variacoes_id:''));
                                             @endphp
@@ -86,6 +86,7 @@
         $("#in_loja_produtos_id").on('change', function() {
             const _this = $(this);
             const _in_loja_variacoes_id = $("#in_loja_variacoes_id");
+            if(_this.val()=='') { return false; }
             $.ajax({
                 url: G.app_url + '/api/v1/variacoes/produto/'+ _this.val(),
                 method: 'GET',

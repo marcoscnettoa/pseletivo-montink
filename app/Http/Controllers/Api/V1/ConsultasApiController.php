@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Services\Consultas\ConsultaCepService;
-use App\Services\Consultas\ConsultaCnpjService;
 use App\Services\Consultas\ConsultaMunicipiosService;
 
 class ConsultasApiController extends Controller {
