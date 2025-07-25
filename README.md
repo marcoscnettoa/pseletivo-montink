@@ -40,6 +40,17 @@ DB_PASSWORD=""
   php artisan serve
 ```
 
+
+### 5. Webhook ( Rota | Testes ) 
+``` 
+  loja_pedidos_id - Representa o ID do pedido 
+  status          - Representa status disponíveis na aplicação 
+  
+  [ 'EM_ANDAMENTO', 'AGUARDANDO_PAGAMENTO', 'ENTREGUE', 'CANCELADO' ]
+
+  Rota Ex: -> http://localhost/api/pedido/webhook?loja_pedidos_id={id}&status={status}
+```
+
 ## 🖼️ Imagens - Previews
 
 Apresentando imagens ilustrativas.
