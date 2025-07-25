@@ -56,9 +56,11 @@ Route::resource('cupons', CuponsController::class)->names([
 ])->parameters(['cupons' => 'id']);
 
 // :: Pedidos -| Carrinho de Compra
-Route::get('carrinho-compra',       [ PedidosCarrinhoDeComprasController::class,'index'])->name('carrinho.compra');
-Route::post('finalizar-compra',     [ PedidosCarrinhoDeComprasController::class, 'finalizarCompra'])->name('finalizar.compra');
-Route::resource('pedidos',            PedidosCarrinhoDeComprasController::class)->names([
+Route::get('notificacao-email/pedido/{id}', [ PedidosCarrinhoDeComprasController::class,'notificacaoEmail'])->name('notificacao.email');
+Route::get('lista-compras',                 [ PedidosCarrinhoDeComprasController::class,'listaCompra'])->name('lista.compras');
+Route::get('carrinho-compra',               [ PedidosCarrinhoDeComprasController::class,'index'])->name('carrinho.compra');
+Route::post('finalizar-compra',             [ PedidosCarrinhoDeComprasController::class, 'finalizarCompra'])->name('finalizar.compra');
+Route::resource('pedidos',                  PedidosCarrinhoDeComprasController::class)->names([
     //'index'     => 'pedidos.index',
     'create'    => 'pedidos.create',
     'edit'      => 'pedidos.edit',

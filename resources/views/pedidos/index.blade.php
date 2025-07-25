@@ -135,20 +135,20 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="in_cliente_nome">Nome Completo <span class="color-danger">*</span></label>
-                                            <input type="text" name="cliente_nome" value="" class="form-control in_cliente_nome" id="in_cliente_nome" placeholder="" required maxlength="255">
+                                            <input type="text" name="cliente_nome" value="{{old('cliente_nome')}}" class="form-control in_cliente_nome" id="in_cliente_nome" placeholder="" required maxlength="255">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="in_cliente_email">E-mail <span class="color-danger">*</span></label>
-                                            <input type="text" name="cliente_email" value="" class="form-control in_cliente_email" id="in_cliente_email" placeholder="" required maxlength="255">
+                                            <input type="email" name="cliente_email" value="{{old('cliente_email')}}" class="form-control in_cliente_email" id="in_cliente_email" placeholder="" required maxlength="255">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="in_cliente_cep">CEP <span class="color-danger">*</span></label>
                                             <div class="input-group">
-                                                <input type="text" name="cliente_cep" value="" class="form-control in_cliente_cep mask-cep" id="in_cliente_cep" placeholder="_____-___" required maxlength="10">
+                                                <input type="text" name="cliente_cep" value="{{old('cliente_cep')}}" class="form-control in_cliente_cep mask-cep" id="in_cliente_cep" placeholder="_____-___" required maxlength="10">
                                                 <div class="input-group-append">
                                                     <button type="button" class="btn btn-primary-st2 btn-consulta-cep"
                                                             data-input-cep="#in_cliente_cep"
@@ -166,25 +166,25 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="in_cliente_endereco">Endereço <span class="color-danger">*</span></label>
-                                            <input type="text" name="cliente_endereco" value="" class="form-control in_cliente_endereco" id="in_cliente_endereco" placeholder="" required maxlength="255">
+                                            <input type="text" name="cliente_endereco" value="{{old('cliente_endereco')}}" class="form-control in_cliente_endereco" id="in_cliente_endereco" placeholder="" required maxlength="255">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="in_cliente_complemento">Complemento <span class="color-danger">*</span></label>
-                                            <input type="text" name="cliente_complemento" value="" class="form-control in_cliente_complemento" id="in_cliente_complemento" placeholder="" required maxlength="255">
+                                            <label for="in_cliente_complemento">Complemento</label>
+                                            <input type="text" name="cliente_complemento" value="{{old('cliente_complemento')}}" class="form-control in_cliente_complemento" id="in_cliente_complemento" placeholder="" maxlength="255">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="in_cliente_numero">Número <span class="color-danger">*</span></label>
-                                            <input type="text" name="cliente_numero" value="" class="form-control in_cliente_numero" id="in_cliente_numero" placeholder="" required maxlength="255">
+                                            <input type="text" name="cliente_numero" value="{{old('cliente_numero')}}" class="form-control in_cliente_numero" id="in_cliente_numero" placeholder="" required maxlength="255">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="in_cliente_bairro">Bairro <span class="color-danger">*</span></label>
-                                            <input type="text" name="cliente_bairro" value="" class="form-control in_cliente_bairro" id="in_cliente_bairro" placeholder="" required maxlength="255">
+                                            <input type="text" name="cliente_bairro" value="{{old('cliente_bairro')}}" class="form-control in_cliente_bairro" id="in_cliente_bairro" placeholder="" required maxlength="255">
                                         </div>
                                     </div>
                                     {{--<div class="col-md-12">
@@ -202,7 +202,7 @@
                                             <select class="form-control selectpicker-st1 dropup change-uf-municipios" name="cliente_uf" data-live-search="true" id="in_cliente_uf" data-size="5" data-input-municipios="#in_cliente_cidade">
                                                 <option value="">---</option>
                                                 @foreach(\App\Support\Lists\Estados::getLista() as $id => $status)
-                                                    <option value="{{$id}}">{{$id}}- {{$status}}</option>
+                                                    <option value="{{$id}}" {{old('cliente_uf')==$id?'selected':''}}>{{$id}}- {{$status}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -213,7 +213,7 @@
                                             @php
                                                 //$status_id_selected = old('edr_cidade',($contabilidades && $contabilidades->edr_cidade?$contabilidades->edr_cidade:''));
                                             @endphp
-                                            <select class="form-control selectpicker-st1 dropup" name="cliente_cidade" _value="{{--{{$status_id_selected}}--}}" data-live-search="true" id="in_cliente_cidade" data-size="5">
+                                            <select class="form-control selectpicker-st1 dropup" name="cliente_cidade" _value="{{old('cliente_cidade')}}" data-live-search="true" id="in_cliente_cidade" data-size="5">
                                                 <option value="">---</option>
                                             </select>
                                         </div>
@@ -255,6 +255,7 @@
                 'codigo' : _in_codigo.val()
             });
         });
+
         $("#btn-cupom-remover").on('click',function(){
             H.redirect(G.app_url+'/remover-cupom','POST','application/x-www-form-urlencoded', { });
         });

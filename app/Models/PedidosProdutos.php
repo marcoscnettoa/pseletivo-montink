@@ -15,4 +15,12 @@ class PedidosProdutos extends Model
     protected $table    = 'loja_pedidos_produtos';
     public $timestamps  = true;
 
+    public function getProduto() {
+        return $this->belongsTo(Produtos::class, 'loja_produtos_id');
+    }
+
+    public function getVariacao() {
+        return $this->belongsTo(Variacoes::class, 'loja_variacoes_id');
+    }
+
 }

@@ -1,5 +1,15 @@
 
+@media (min-width: 1400px) {
+    .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+        max-width: 1400px;
+    }
+}
+
 html body .pace .pace-progress { background: #e75e0f; }
+
+html body { background-image: url("../images/bg-logo-montink.png"); background-repeat:no-repeat; background-position:left bottom; }
+
+#box-content .content-wrapper { margin-bottom:100px; }
 
 #header-navbar-topo { background-color:#000000; border-bottom:0; }
 
@@ -25,6 +35,8 @@ form label { color: #545454; font-weight: 600;}
 .table-st1 { }
 .table-st1 th,
 .table-st1 td { padding: 0.5rem 2rem !important; vertical-align: middle; }
+.table-st1 td.p-0_i { padding:0 !important; }
+.table-st1 td.m-0_i { margin:0 !important; }
 .table-st1.lista-form th,
 .table-st1.lista-form td { padding: 0.5rem 1rem !important; vertical-align: middle; }
 .table-st1.lista-form tr.t-h { }
@@ -96,6 +108,16 @@ form label { color: #545454; font-weight: 600;}
 .lista-produtos .card .card-footer { }
 .lista-produtos .card .card-footer button.btn-comprar { }
 .lista-produtos .card .card-footer button.btn-comprar[disabled] { cursor:not-allowed; background-color: #ccc !important; border-color: #9c9c9c !important; color: #8d8d8d; }
+
+.table-lista-compras {}
+.table-lista-compras tr  {}
+.table-lista-compras tr th { /*background-color: #e75e0f; color: #fff; */ }
+.table-lista-compras tr td { }
+.table-lista-compras tr td.codigo_pedido { background-color: #5cb85c; color: #fff; font-weight: 400; }
+.table-lista-compras .table-lista-compras-produtos { }
+.table-lista-compras .table-lista-compras-produtos tr  {}
+.table-lista-compras .table-lista-compras-produtos tr th { font-weight: 600; padding: 2px 15px !important; /*background-color: #000000; color: #fff;*/ }
+.table-lista-compras .table-lista-compras-produtos tr td { }
 
 #main-menu-navigation { }
 #main-menu-navigation li { }

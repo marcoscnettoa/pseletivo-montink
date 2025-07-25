@@ -73,6 +73,9 @@
             <li class="nav-item">
                 <a class="nav-link nav-link-carrinho-compra {{Request::segment(1)=='carrinho-compra'?'active':'' }}" href="{{route('carrinho.compra')}}"><i class="feather icon-shopping-cart"></i><span>Carrinho de Compra</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{Request::segment(1)=='lista-compras'?'active':'' }}" href="{{route('lista.compras')}}"><i class="feather icon-check-circle"></i><span>Lista de Compras</span></a>
+            </li>
         </ul>
     </div>
 </div>

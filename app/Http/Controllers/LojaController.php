@@ -12,6 +12,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cupons;
+use App\Models\Estoques;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Models\Produtos;
@@ -43,14 +44,21 @@ class LojaController extends Controller
 
         try {
 
-            // session()->invalidate(); return ''; exit;
+            $data               =  request()->all();
+            $carrinho           = session()->get('carrinho',[]);
+            $produto_variacao   = 'loja_produtos_id_'.$data['loja_produtos_id'].'_loja_variacoes_id_'.$data['loja_variacoes_id'];
 
-            $data     =  request()->all();
+            // ! Valida a quantidade ( produto + variação )
+            $estoque_qt                    = Estoques::where('loja_produtos_id', $data['loja_produtos_id'])
+                                                     ->where('loja_variacoes_id', $data['loja_variacoes_id'])
+                                                     ->value('quantidade');
 
-            $carrinho = session()->get('carrinho',[]);
+            // ! Verificando estoque disponível
+            if(isset($carrinho[$produto_variacao]) && (($carrinho[$produto_variacao]['quantidade'] + 1) > $estoque_qt)) {
+                return redirect()->route('loja.index')->withInput()->withErrors(['error' => 'Quantidade não disponível em estoque.']);
+            }
 
-            $produto_variacao = 'loja_produtos_id_'.$data['loja_produtos_id'].'_loja_variacoes_id_'.$data['loja_variacoes_id'];
-            if(isset($carrinho[$produto_variacao])){
+            if(isset($carrinho[$produto_variacao])) {
                 $carrinho[$produto_variacao]['quantidade']++;
             }else {
                 $carrinho[$produto_variacao] = [
@@ -64,8 +72,6 @@ class LojaController extends Controller
             session()->put('carrinho', $carrinho);
 
             return redirect()->route('carrinho.compra');
-
-            //print_r(session()->get('carrinho')); exit;
 
         }catch(\Exception $e){
             Log::error('Error: '.$e->getMessage());

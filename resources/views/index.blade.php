@@ -43,6 +43,10 @@
                                 </div>
                             </div>
                         @endforeach
+                    @else
+                        <div class="col-md-12">
+                            <p class="text-center">- Sem produtos na Loja -</p>
+                        </div>
                     @endif
                 </div>
             </section>

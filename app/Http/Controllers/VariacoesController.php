@@ -39,7 +39,7 @@ class VariacoesController extends Controller
     public function index() {
         try {
 
-            $variacoes = Variacoes::get();
+            $variacoes = Variacoes::orderBy('loja_produtos_id','ASC')->get();
 
             return view('variacoes.index', [
                 'variacoes' => $variacoes

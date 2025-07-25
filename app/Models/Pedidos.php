@@ -15,4 +15,12 @@ class Pedidos extends Model
     protected $table    = 'loja_pedidos';
     public $timestamps  = true;
 
+    public function getCupom() {
+        return $this->belongsTo(Cupons::class, 'loja_cupons_id');
+    }
+
+    public function getPedidoProdutos() {
+        return $this->hasMany(PedidosProdutos::class, 'loja_pedidos_id', 'id');
+    }
+
 }
