@@ -37,9 +37,9 @@ DB_PASSWORD=""
 ### 4. Comandos Úteis -| SQL
 ```bash 
   php artisan key:generate
+  php artisan optimize:clear
   php artisan serve
 ```
-
 
 ### 5. Webhook ( Rota | Testes ) 
 ``` 
@@ -56,6 +56,7 @@ DB_PASSWORD=""
 Apresentando imagens ilustrativas.
 ```
 /previews/
+├─ loja.png
 ├─ produtos.png
 ├─ produtos_variacoes.png
 ├─ produtos_estoques.png
